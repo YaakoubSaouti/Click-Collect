@@ -1,0 +1,48 @@
+﻿@model Order
+@{
+    ViewData["Title"]= "Order of the day";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@section navBarItems{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Cashier" asp-action="SeeClientsOfTheDay">Clients</a>
+    </li>
+}
+
+<div class="card border-dark mb-3" style="max-width: 100rem;">
+    <div class="text-dark bg-grey card-header">Order number : @Model.Id</div>
+    <div class="card-body text-dark">
+    <h5 class="card-title text-center text-dark bg-grey font-weight-bold">@Model.Client.Lastname @Model.Client.Lastname</h5><br />
+        <div class= "row">
+            <div class="col">
+                <div class="card">
+                    <div class="text-dark bg-grey card-header">Details</div>
+                    <div class="card-body text-center">
+                        <p class="card-text">Timeslot : @Model.Timeslot.ToString() </p>
+                        <p class="card-text">Given boxes : @Model.NumberOfBoxes </p>
+                        <p class="card-text">Total price(with service) : @Model.Price() €</p>
+                    </div>
+                </div>
+                    
+            </div>
+            <div class ="col">
+                <div class ="card">
+                    <div class="text-dark bg-grey card-header">Remove Box</div>
+                    <div class="card-body text-center ">
+                        <form asp-controller="Cashier" asp-action="RemoveReturnedBoxesFromOrder" method="post">
+                            <input type="number" name="nbr_boxes" id="nbr_boxes" placeholder="Boxes To Remove"/><br /><br />    
+                            <input type="submit" value="Apply" class="btn btn-primary"/><br />
+                            <span class="text-danger"text-danger>@ViewData["error_boxes"]</span>
+                        </form>    
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <form asp-controller="Cashier" asp-action="FinalizeOrder" method="post">    
+        <input type="submit" value="Finalize Order" class="btn btn-outline-success"/><br />
+    </form>  
+</div>
+    

@@ -1,0 +1,13 @@
+﻿@model List<Category>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+    Category
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    @foreach(Category category in Model)
+    {
+        <partial name="_Category" model="category"/>
+    }
+  </ul>
+</div>

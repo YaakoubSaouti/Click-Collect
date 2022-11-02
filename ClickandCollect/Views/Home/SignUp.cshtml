@@ -1,0 +1,58 @@
+﻿@using ClickandCollect.ViewModels
+@{
+    ViewData["Title"] = "Sign up";
+}
+
+@model SignUpViewModel
+
+@section navBarItems{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LogIn">Log in</a>
+    </li>
+}
+<div class="text-center">
+    <h1 class="display-4">Sign up</h1>
+</div>
+<br /><br />
+<div class="form-group" >
+    <form asp-controller="Home" asp-action="SignUp" method="post">
+        <div class="row">
+                <div class="col">
+                    <input asp-for="Lastname" class="form-control" placeholder="Lastname"/>
+                    <span asp-validation-for="Lastname" class="text-danger"></span> 
+                </div>
+                <div class="col">
+                    <input asp-for="Firstname" class="form-control" placeholder="Firstname">
+                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                </div>
+        </div>
+        <br />
+        <div class="row">
+                <div class="col">
+                    <input  asp-for="Username" class="form-control" placeholder="Username"/>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div> 
+                <div class="col">
+                    <input  asp-for="Password" class="form-control" placeholder="Password"/>
+                    <span asp-validation-for="Password" class="text-danger"></span><br />
+                    <input  asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password"/>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div> 
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="row">
+                <span class="text-danger">@ViewData["error_db"]</span>
+            </div>
+            <div class ="row">
+                <div class="col">
+                    <a asp-controller="Home" asp-action ="Index">Cancel</a>
+                </div>
+                <div class="col">
+                    <input type="submit" placeholder="Sign up" value="Sign up" class="btn btn-outline-dark"/>
+                </div>   
+            </div> 
+        </div>
+    </form>
+</div>
+

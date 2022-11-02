@@ -1,0 +1,10 @@
+﻿@model Choice
+
+<div class="card mt-2 mb-2">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Product.Name</h5>
+    <h6 class="card-subtitle text-muted">Price : @Model.Product.Price €</h6>
+    <p class="card-text">Quantity : @Model.Quantity</p>
+    <p class="card-text">Total of the choice : @Model.Price() €</p>
+  </div>
+</div>

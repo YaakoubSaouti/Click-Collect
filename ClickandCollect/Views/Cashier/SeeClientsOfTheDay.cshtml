@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"]= "Order of the day";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@model List<Order>
+
+<div class="text-center">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+        <p class="alert-success">@ViewData["error_saving"]</p>
+        <p class="alert-success">@ViewData["success_finalize"]</p>
+        <p class="alert-danger">@ViewData["no_order"]</p>
+        <p class="alert-danger">@ViewData["error_access"]</p>
+        @if (Model.Count == 0)
+        {
+            <p class="alert-danger">There is no orders for the day!</p>
+        }else{
+            @foreach(Order o in Model)
+            {
+                <partial name="_OrderOfTheDay" model="o"/>
+            }
+        }
+</div>

@@ -1,0 +1,31 @@
+﻿@using ClickandCollect.ViewModels
+@{
+    ViewData["Title"]= "Choose a Timeslot";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@section navBarItems{
+    <ul class="navbar-nav ml-auto">
+        <li>
+            <a asp-controller="Client" asp-action="SeeCart" class="btn btn-primary">Cart</a>
+        </li>     
+    </ul>
+}
+@if (!String.IsNullOrEmpty(ViewBag.success))
+{
+    <p class="alert alert-success">
+        @ViewBag.success
+    </p>
+}
+@model TimeslotSelectViewModel 
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <br /><br />
+    <div class ="text-md-center">
+        <form asp-controller="Client" asp-action="ChooseTimeslot" method="post">
+            <select class="p-2 mb-5" asp-for="TimeslotSelect" asp-items="Model.TimeslotsSelect"></select>
+            <br />
+            <input type="submit" value="Submit" class="btn btn-outline-primary"/>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"]= "See Cart";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@model Order
+
+@if (string.IsNullOrEmpty((string)ViewData["error_session"]))
+{
+    <div class="text-center">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+        @foreach(Choice c in Model.Choices)
+        {
+            <partial name="_Choice" model="c"/>
+        }
+    </div>
+    @section navBarItems{
+        <li class="nav-item">
+           <a class="nav-link text-dark" asp-controller="Client" asp-action="SeeProducts">Products</a>
+        </li>
+        <ul class="navbar-nav ml-auto">
+            <li>
+                <a asp-controller="Client" asp-action="ChooseMarket" class="btn btn-outline-success">Send Order</a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    @section navBarItems{
+        <li class="nav-item">
+           <a class="nav-link text-dark" asp-controller="Client" asp-action="SeeProducts">Products</a>
+        </li>
+    }
+    <p class="alert alert-danger">@ViewData["error_session"]</p>
+}

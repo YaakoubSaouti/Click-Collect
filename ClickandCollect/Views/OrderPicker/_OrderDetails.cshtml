@@ -1,0 +1,33 @@
+﻿@model Order
+<div class="card border-dark mb-3" style="max-width: 100rem;">
+    <div class="card-header">N° : @Model.Id</div>
+    <div class="card-body text-dark">
+    <h5 class="card-title text-center">@Model.Client.Lastname @Model.Client.Lastname</h5>
+    <h6 class="card-subtitle">Choice Prducts </h6>
+    <div class="row">
+        <div class="col">
+            @foreach(Choice c in Model.Choices)
+                {
+                    <partial name="_OrderChoices" model="c"></partial>
+                }
+        </div>
+        <div class="col ml-auto" style="max-width: 30rem;">
+            <div class="text-white bg-primary card-header">Details</div>
+            <div class="card-body">
+                <p class="text">Market : @Model.Market.ToString()</p>
+                <p class="text">Timeslot : @Model.Timeslot.ToString()</p>
+                <p class="text">Total price(with service) : @Model.Price() €</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class ="card">
+        <div class="text-white bg-primary card-header">Boxes</div>
+        <div class="card-body">
+            <input type="number" name="nbr_boxes" id="nbr_boxes" value="1" placeholder="Needed Boxes"/><br /><br />    
+            <span class="text-danger"text-danger>@ViewData["error_boxes"]</span> 
+        </div>
+    </div>   
+    </div>
+</div>
+    

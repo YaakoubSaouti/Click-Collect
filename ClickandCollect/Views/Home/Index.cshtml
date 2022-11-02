@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section navBarItems{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LogIn">Log In</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">Sign up</a>
+    </li>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Click And Collect</h1>
+    @if (!string.IsNullOrEmpty(ViewBag.not_connected))
+    {
+        <p class="text-danger">
+            @ViewBag.not_connected
+        </p>
+    }   
+</div>

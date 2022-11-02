@@ -1,0 +1,10 @@
+﻿@model Choice
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Product.Name</h5>
+    <p class="card-subtitle">Price : @Model.Product.Price €</p>
+    <p class="card-text">Quantity : @Model.Quantity</p>
+    <p class="card-text">Total of the choice : @Model.Price() €</p>
+    <a asp-controller="Client" asp-action="DeleteProduct" asp-route-id="@Model.Product.Id" class="btn btn-danger">Remove</a>
+  </div>
+</div>

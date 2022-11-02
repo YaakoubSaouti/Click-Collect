@@ -1,0 +1,10 @@
+﻿@model Product
+
+<div class="card mt-2 ml-2" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Name</h5>
+    <h6 class="card-subtitle mb-2 text-muted">@Model.Price €</h6>
+    <p class="card-text">@Model.Description</p>
+    <a asp-controller="Client" asp-action="AddProduct" asp-route-id="@Model.Id" class="btn btn-primary">Add to cart</a>
+  </div>
+</div>

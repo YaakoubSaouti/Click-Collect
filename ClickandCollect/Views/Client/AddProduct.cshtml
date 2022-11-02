@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"]= "Add Product";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@model Choice
+@{
+    var parms = new Dictionary<string, string>
+    {
+        { "id_product", (Model.Product.Id).ToString() }
+    };
+}
+@section navBarItems{
+    
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Client" asp-action="SeeProducts">Products</a>
+    </li>
+    <ul class="navbar-nav ml-auto">
+        <li class="">
+            <a class="btn btn-primary" asp-controller="Client" asp-action="SeeCart">Cart</a>
+        </li>
+    </ul>
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <div class="card mt-5 mr-auto" style="width:20rem; margin:auto">
+          <div class="card-body">
+            <h5 class="card-title">@Model.Product.Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Product.Price €</h6>
+            <p class="card-text">@Model.Product.Description</p>
+            <p>
+                <form asp-controller="Client" asp-action="AddProduct" method="post" asp-all-route-data="parms">
+                    <input  asp-for="Quantity" placeholder="Quantity"/><br /><br />           
+                    <input type="submit" value="Add" class="btn btn-primary"/><br />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </form>
+            </p>
+          </div>
+    </div>
+</div>

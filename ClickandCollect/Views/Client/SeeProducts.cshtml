@@ -1,0 +1,59 @@
+﻿@using ClickandCollect.ViewModels
+@{
+    ViewData["Title"]= "See Products";
+    ViewData["Log Out"]= "/ Log Out";
+    int cpt = 0;
+}
+@section navBarItems{
+    <ul class="navbar-nav ml-auto">
+        <li>
+            <a asp-controller="Client" asp-action="SeeCart" class="btn btn-primary">Cart</a>
+        </li>     
+    </ul>
+    
+}
+@model ProductsCategoriesViewModel
+
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+<br />
+@if (!String.IsNullOrEmpty(ViewBag.success))
+{
+    <p class="alert alert-success ml-2" style="width:39rem;">
+        @ViewBag.success
+    </p>
+}
+@if (!String.IsNullOrEmpty(ViewBag.successAddProduct))
+{
+    <p class="alert alert-success ml-2" style="width:39rem;">
+        @ViewBag.successAddProduct
+    </p>
+}
+@if (!String.IsNullOrEmpty(ViewBag.errorAddProduct))
+{
+    <p class="alert alert-danger ml-2" style="width:39rem;">
+        @ViewBag.errorAddProduct
+    </p>
+}
+@if (!String.IsNullOrEmpty(ViewBag.errorOrder))
+{
+    <p class="alert alert-danger ml-2" style="width:39rem;">
+        @ViewBag.errorOrder
+    </p>
+}
+<partial name="_Categories" model="Model.Categories"/>
+@foreach(Product p in Model.Products)
+{
+    @if(cpt%5 == 0){
+         @:<div class="card-group"> 
+    }
+
+    <partial name="_Product" model="p"/>
+
+    @if(cpt%5 == 4 || Model.Products.Count==cpt){
+          @:</div>    
+    }
+    cpt++;
+}

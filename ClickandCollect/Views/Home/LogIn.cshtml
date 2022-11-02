@@ -1,0 +1,49 @@
+﻿@using ClickandCollect.ViewModels
+@{
+    ViewData["Title"] = "Log in";
+}
+@model LoginViewModel
+@section navBarItems{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">Sign up</a>
+    </li>
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+@if (!String.IsNullOrEmpty(ViewBag.sor))
+{
+    <p class="alert alert-success">
+        @ViewBag.sor
+    </p>
+}
+<br /><br/>
+<div class="form-group">
+    <form asp-controller="Home" asp-action="LogIn" method="post">
+        <div class="row">
+              <div class="col">
+                    <input  asp-for="Username" class="form-control" placeholder="Username"/>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+              </div> 
+
+              <div class="col">
+                    <input  asp-for="Password" class="form-control" placeholder="Password"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+              </div> 
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="row">
+                <span class="text-danger">@ViewData["error_db"]</span>
+            </div>
+            <div class ="row">
+                <div class="col">
+                    <a asp-controller="Home" asp-action ="Index">Cancel</a>
+                </div>
+                <div class="col">
+                    <input type="submit" value="Log in" class="btn btn-outline-dark"/> 
+                </div>
+            </div> 
+        </div>
+    </form> 
+</div>

@@ -1,0 +1,13 @@
+﻿@model Order
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row">
+        <div class="col">
+            <p >Order Number : @Model.Id</p>
+        </div>
+        <div class="col ml-auto">
+            <a asp-controller="OrderPicker" asp-action="MarkOrderAsPrepared" asp-route-id="@Model.Id" class="btn btn-outline-dark">Manage order</a>
+        </div>
+    </div>     
+  </div>
+</div>

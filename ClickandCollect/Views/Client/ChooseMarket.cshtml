@@ -1,0 +1,25 @@
+﻿@using ClickandCollect.ViewModels
+@{
+    ViewData["Title"]= "Choose a Market";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@section navBarItems{
+    <ul class="navbar-nav ml-auto">
+        <li>
+            <a asp-controller="Client" asp-action="SeeCart" class="btn btn-primary">Cart</a>
+        </li>     
+    </ul>
+    
+}
+@model MarketSelectViewModel 
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <br /><br />
+    <div class ="text-md-center">
+        <form asp-controller="Client" asp-action="ChooseMarket" method="post">
+            <select class="p-2 mb-5" asp-for="MarketSelect" asp-items="Model.MarketsSelect"></select>
+            <br />
+            <input type="submit" value="Submit" class="btn btn-outline-primary"/>
+        </form>
+    </div>
+</div>

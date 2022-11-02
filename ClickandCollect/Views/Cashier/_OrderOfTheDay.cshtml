@@ -1,0 +1,16 @@
+﻿@model Order
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Client.Lastname @Model.Client.Firstname</h5>
+    <div class="row">
+        <div class="col">
+            <p class="card-subtitle">Order Number : @Model.Id</p>
+         
+            <p class="card-text">Timeslot : @Model.Timeslot</p>
+        </div>
+        <div class="col ml-auto">
+            <a asp-controller="Cashier" asp-action="FinalizeOrder" asp-route-id="@Model.Id" class="btn btn-outline-dark">Finalize order</a>
+        </div>
+    </div>     
+  </div>
+</div>

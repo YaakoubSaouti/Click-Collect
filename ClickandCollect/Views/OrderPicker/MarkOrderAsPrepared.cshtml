@@ -1,0 +1,16 @@
+﻿@model Order
+@{
+    ViewData["Title"]= "Manage Order";
+    ViewData["Log Out"]= "/ Log Out";
+}
+@section navBarItems{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="OrderPicker" asp-action="SeeClientsOfTheDay">Orders</a>
+    </li>
+}
+<form asp-controller="OrderPicker" asp-action="MarkOrderAsPrepared" method="post">
+    <partial name="_OrderDetails"></partial>
+    <div class="text-center">
+        <input type="submit" value="Prepare Order" class="btn btn-outline-success"/>
+    </div>
+</form>
